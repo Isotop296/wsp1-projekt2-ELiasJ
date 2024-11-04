@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt 2</title>
-    <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
-</head>
-<body>
 
-</body>
-</html>
+<div class="låda">
+<form action="/fruits/new" method="post">
+   <label>Frukt <input type="text" name="fruit_name"></label>
+   <label>Smak <input type="text" name="fruit_tastiness"></label>
+   <label>Beskrivning <input type="text" name="fruit_description"></label>
+   <input type="submit" value="Spara">
+</form></div>
