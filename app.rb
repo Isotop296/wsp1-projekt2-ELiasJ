@@ -10,7 +10,17 @@ class App < Sinatra::Base
 
 
     get '/' do
-        erb(:"index")
+        erb(:"new")
     end
 
+    get '/spel' do
+        @spel = db.execute('SELECT * FROM fruits')
+        erb(:"spel/index")
+    end
+
+    get '/spel/:id' do | id |
+        result = db.execute('SELECT beskrivning FROM spel WHERE id = ?', [id]).first
+        @spel_info = result["description"] if result 
+        erb(:"fruits/show")
+    end
 end

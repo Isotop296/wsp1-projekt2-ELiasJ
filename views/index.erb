@@ -1,8 +1,14 @@
+<h2>Alla spelen</h2>
 
-<div class="låda">
-<form action="/fruits/new" method="post">
-   <label>Frukt <input type="text" name="fruit_name"></label>
-   <label>Smak <input type="text" name="fruit_tastiness"></label>
-   <label>Beskrivning <input type="text" name="fruit_description"></label>
-   <input type="submit" value="Spara">
-</form></div>
+<ul>
+<% @spel.each do |spel| %>
+  <li><a href="/views/<%= spel['id']%>"><%= spel['name'] %></a> 
+    <form action="/views/<%=spel["id"]%>/delete" method="post">
+      <input type="submit" value="ta bort"> 
+    </form>
+    <form action="/views/<%=fruit["id"]%>/edit" method="get">
+      <input type="submit" value="Ändra"> 
+    </form>
+  </li>
+<% end %>
+</ul>
