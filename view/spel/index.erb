@@ -1,0 +1,14 @@
+<h2>Alla spelen</h2>
+
+<ul>
+<% @spel.each do |spel| %>
+  <li><a href="/spel/<%= spel['id']%>"><%= spel['name'] %></a> 
+    <form action="/spel/<%=spel["id"]%>/delete" method="post">
+      <input type="submit" value="ta bort"> 
+    </form>
+    <form action="/spel/<%=spel["id"]%>/edit" method="get">
+      <input type="submit" value="Ändra"> 
+    </form>
+  </li>
+<% end %>
+</ul>

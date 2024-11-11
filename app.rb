@@ -2,7 +2,7 @@ class App < Sinatra::Base
     def db
         return @db if @db
 
-        @db = SQLite3::Database.new("db/fruits.sqlite")
+        @db = SQLite3::Database.new("db/spel.sqlite")
         @db.results_as_hash = true
 
         return @db
@@ -15,12 +15,6 @@ class App < Sinatra::Base
 
     get '/spel' do
         @spel = db.execute('SELECT * FROM spel')
-        erb(:"views/index")
-    end
-
-    get '/spel/:id' do | id |
-        result = db.execute('SELECT beskrivning FROM spel WHERE id = ?', [id]).first
-        @spel_info = result["description"] if result 
-        erb(:"fruits/show")
+        erb(:"spel/index")
     end
 end
