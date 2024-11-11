@@ -10,12 +10,12 @@ class App < Sinatra::Base
 
 
     get '/' do
-        erb(:"new")
+        redirect('/spel')
     end
 
     get '/spel' do
         @spel = db.execute('SELECT * FROM fruits')
-        erb(:"spel/index")
+        erb(:"views/index")
     end
 
     get '/spel/:id' do | id |
