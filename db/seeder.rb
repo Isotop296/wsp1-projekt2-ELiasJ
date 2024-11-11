@@ -3,6 +3,13 @@ require 'sqlite3'
 class Seeder
 
   def self.seed!
+  drop_tables
+  create_tables
+  populate_tables
+  end
+
+
+  def self.drop_tables
     db.execute('DROP TABLE IF EXISTS spel')
   end
 
@@ -11,14 +18,14 @@ class Seeder
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
                 pris INTEGER,
-                beskrivning TEXT,
+                beskrivning TEXT)
                 ')
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO spelat (name, pris, beskrivning) VALUES ("apex",   6, "Ett spel.")')
-    db.execute('INSERT INTO spelat (name, pris, beskrivning) VALUES ("dark souls", 8, "aaaaaaaahhhaha")')
-    db.execute('INSERT INTO vill_spela (name, pris, beskrivning) VALUES ("blood born",  8, "snart")')
+    db.execute('INSERT INTO spel (name, pris, beskrivning) VALUES ("apex",   6, "Ett spel")')
+    db.execute('INSERT INTO spel (name, pris, beskrivning) VALUES ("dark souls", 8, "aaaaaaaahhhaha")')
+    db.execute('INSERT INTO spel (name, pris, beskrivning) VALUES ("blood born",  8, "snart")')
   end
 
   private

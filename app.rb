@@ -14,7 +14,7 @@ class App < Sinatra::Base
     end
 
     get '/spel' do
-        @spel = db.execute('SELECT * FROM fruits')
+        @spel = db.execute('SELECT * FROM spel')
         erb(:"views/index")
     end
 
