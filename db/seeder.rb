@@ -1,5 +1,5 @@
 require 'sqlite3'
-
+require 'bcrypt'
 class Seeder
 
   def self.seed!
@@ -16,16 +16,17 @@ class Seeder
   def self.create_tables
     db.execute('CREATE TABLE spel (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
+                namn TEXT NOT NULL,
                 pris INTEGER,
-                beskrivning TEXT)
+                beskrivning TEXT,
+                kategori bolean)
                 ')
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO spel (name, pris, beskrivning) VALUES ("apex",   6, "Ett spel")')
-    db.execute('INSERT INTO spel (name, pris, beskrivning) VALUES ("dark souls", 8, "aaaaaaaahhhaha")')
-    db.execute('INSERT INTO spel (name, pris, beskrivning) VALUES ("blood born",  8, "snart")')
+    db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori ) VALUES ("apex",   6, "Ett spel", "true")')
+    db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori) VALUES ("dark souls", 8, "aaaaaaaahhhaha", "false")')
+    db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori) VALUES ("blood born",  8, "snart", "true")')
   end
 
   private

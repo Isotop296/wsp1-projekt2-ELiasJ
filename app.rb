@@ -14,7 +14,8 @@ class App < Sinatra::Base
     end
 
     get '/spel' do
-        @spel = db.execute('SELECT * FROM spel')
+        @spel_klara = db.execute('SELECT * FROM spel where kategori = ?', ["true"])
+        @spel_oklara = db.execute('SELECT * FROM spel where kategori = ?', ["false"])
         erb(:"spel/index")
     end
 
@@ -28,8 +29,30 @@ class App < Sinatra::Base
         spel_namn = params[:spel_namn]
         spel_pris =  params[:spel_pris]
         spel_beskrivning =  params[:spel_beskrivning]
-        db.execute('INSERT INTO spel (name, pris, beskrivning) VALUES (?, ?, ?)', [spel_namn, spel_pris, spel_beskrivning])
+        spel_kategori = params[:spel_kategori]
+        db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori) VALUES (?, ?, ?, ?)', [spel_namn, spel_pris, spel_beskrivning, spel_kategori])
         redirect('/spel') 
+    end
+
+
+    post '/spel/:id/delete' do
+        id = params[:id]
+        db.execute('DELETE FROM spel where id = ?', [id])
+        redirect '/spel'
+    end
+
+    get '/spel/:id/edit' do |id|
+        @spel = db.execute('SELECT * FROM spel WHERE id = ?', id).first
+        erb(:"spel/edit")
+    end
+
+    post '/spel/:id/update' do |id|
+        namn = params[:spel_namn]
+        pris = params[:spel_pris]
+        beskrivning = params[:spel_beskrivning]
+        spel_kategori = params[:spel_kategori]
+        db.execute('UPDATE spel SET namn = ?, pris = ?, beskrivning = ?, kategori = ? WHERE id = ?', [namn, pris, beskrivning, spel_kategori, id])
+        redirect "/spel"
     end
 
 

@@ -1,22 +1,47 @@
-<h2>Alla spelen</h2>
+<h2>Spelen du vill spela</h2>
 
 <ul>
-<% @spel.each do |spel| %>
-  <li><a href="/spel/<%= spel['id']%>"><%= spel['name'] %></a> 
-    <form action="/spel/<%=spel["id"]%>/delete" method="post">
+<div class="flex">
+<% @spel_oklara.each do |spel| %>
+  <div class="backferg"><div class="namn_div"><%= spel['namn'] %></div> <div class="beskrivning_div"><%= spel['beskrivning'] %></div>
+    <div class="knappar_div"><form action="/spel/<%=spel["id"]%>/delete" method="post">
       <input type="submit" value="ta bort"> 
     </form>
     <form action="/spel/<%=spel["id"]%>/edit" method="get">
       <input type="submit" value="Ändra"> 
     </form>
-  </li>
+    </div>
+  </div>
+  <br>
 <% end %>
+</div>
+
+<h2>Spelen du har spelat</h2>
+<div class="flex">
+<% @spel_klara.each do |spel| %>
+  <div class="backferg"><div class="namn_div"><%= spel['namn'] %></div> <div class="beskrivning_div"><%= spel['beskrivning'] %></div>
+    <div class="knappar_div"><form action="/spel/<%=spel["id"]%>/delete" method="post">
+      <input type="submit" value="ta bort"> 
+    </form>
+    <form action="/spel/<%=spel["id"]%>/edit" method="get">
+      <input type="submit" value="Ändra"> 
+    </form>
+    </div>
+  </div>
+  <br>
+<% end %>
+</div>
 </ul>
 
-
+<div class="edit_holder">
 <form action="/spel" method="post">
    <label>spelets namn <input type="text" name="spel_namn"></label>
    <label>pris <input type="text" name="spel_pris"></label>
    <label>beskrivning <input type="text" name="spel_beskrivning"></label>
+   <select name="spel_kategori" id="drop_down">
+  <option value="true">Spelat</option>
+  <option value="false">Vill spela</option>
+  </select>
    <input type="submit" value="Spara">
 </form>
+</div>

@@ -1,0 +1,10 @@
+<form action="/spel/<%= @spel['id'] %>/update" method="post">
+   <label>Namn <input type="text" name="spel_namn" value='<%= @spel['namn']%>'></label>
+   <label>Pris <input type="text" name="spel_pris" value='<%= @spel['pris']%>'></label>
+   <label>Beskrivning <input type="text" name="spel_beskrivning" value='<%= @spel['beskrivning']%>'></label>
+   <select name="spel_kategori" id="drop_down">
+  <option value="true">Spelat</option>
+  <option value="false">Vill spela</option>
+  </select>
+   <input type="submit" value="Spara">
+</form>

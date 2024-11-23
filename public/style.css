@@ -1,9 +1,53 @@
 body {
   font-family: sans-serif;
-  color: #666;
-  background-color: #f1f1f1;
+  color: white;
+  background-color: #203454;;
   font-size: x-large;
   margin: 1em;
 }
 
 
+.backferg{
+  float: top;
+  border-radius: 25px 25px;
+  width: 300px;
+  height: 180px;
+  background-color: #243d66;
+  box-shadow:  rgb(41,128,185) 0px 25px 50px -12px;
+  color: white;
+}
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.namn_div{
+  padding-left: 20px;
+  padding-top: 3px;
+  font-size: 30px;
+}
+
+
+.beskrivning_div{
+  padding-left: 20px;
+  padding-top: 15px;
+  font-size: 18px;
+
+}
+
+.knappar_div{
+  display: flex;
+  justify-content: bottom;
+padding-top: 67px;
+padding-left: 90px;
+
+}
+
+
+#drop_down{
+
+  
+}
