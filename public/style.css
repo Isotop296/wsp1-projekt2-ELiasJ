@@ -4,6 +4,8 @@ body {
   background-color: #203454;;
   font-size: x-large;
   margin: 1em;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 
@@ -47,7 +49,15 @@ padding-left: 90px;
 }
 
 
-#drop_down{
 
-  
+.edit_holder{
+  background-color: #243d66;
+  width: 500px;
+  height: 80vh;
+  float: right;
+  position: absolute;
+  top: 50px;
+  left: 60vw;
+  box-shadow:  rgb(18, 24, 27) 0px 25px 50px -12px;
 }
+

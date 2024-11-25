@@ -11,6 +11,7 @@ class Seeder
 
   def self.drop_tables
     db.execute('DROP TABLE IF EXISTS spel')
+    db.execute('DROP TABLE IF EXISTS users')
   end
 
   def self.create_tables
@@ -21,12 +22,22 @@ class Seeder
                 beskrivning TEXT,
                 kategori bolean)
                 ')
+    db.execute('CREATE TABLE users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                gmail TEXT NOT NULL,
+                password integer
+                )
+                  ')
   end
 
   def self.populate_tables
     db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori ) VALUES ("apex",   6, "Ett spel", "true")')
     db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori) VALUES ("dark souls", 8, "aaaaaaaahhhaha", "false")')
     db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori) VALUES ("blood born",  8, "snart", "true")')
+    password_hashed = BCrypt::Password.create("123")
+    db.execute('INSERT INTO users (username, password) 
+			 VALUES (?, ?)', ["ola", password_hashed])
+
   end
 
   private

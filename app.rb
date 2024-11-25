@@ -55,6 +55,9 @@ class App < Sinatra::Base
         redirect "/spel"
     end
 
+    get '/spel/loggin' do
+        erb(:"spel/loggin")
+    end
 
 
 end
