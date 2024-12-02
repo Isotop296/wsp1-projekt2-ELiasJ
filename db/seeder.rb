@@ -26,18 +26,19 @@ class Seeder
     db.execute('CREATE TABLE users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT NOT NULL,
-                password integer
+                password integer,
+                admin bolean
                 )
                   ')
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori, kreator ) VALUES ("apex",   6, "Ett spel", "true", nil)')
-    db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori, kreator) VALUES ("dark souls", 8, "aaaaaaaahhhaha", "false", nil)')
+    db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori, kreator ) VALUES ("apex",   6, "Ett spel", "true", "")')
+    db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori, kreator) VALUES ("dark souls", 8, "aaaaaaaahhhaha", "false", "")')
     db.execute('INSERT INTO spel (namn, pris, beskrivning, kategori, kreator) VALUES ("blood born",  8, "snart", "true", "ola")')
     password_hashed = BCrypt::Password.create("123")
-    db.execute('INSERT INTO users (username, password) 
-			 VALUES (?, ?)', ["ola", password_hashed])
+    db.execute('INSERT INTO users (username, password, admin) 
+			 VALUES (?, ?)', ["ola", password_hashed, false])
 
   end
 

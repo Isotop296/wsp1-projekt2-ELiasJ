@@ -9,7 +9,7 @@ class App < Sinatra::Base
 
         return @db
     end
-
+ 
 
     get '/' do
         redirect('/spel')
@@ -19,6 +19,19 @@ class App < Sinatra::Base
         @spel_klara = db.execute('SELECT * FROM spel where kategori = ?', ["true"])
         @spel_oklara = db.execute('SELECT * FROM spel where kategori = ?', ["false"])
         erb(:"spel/index")
+    end
+
+    get '/loggin' do
+        p "hej"
+        erb(:"spel/loggin")
+    end
+
+    post "/loggin/new" do
+        username = params[:username]
+        password = params[:password]
+        pasword_hase = BCrypt::Password.create(password)
+        db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, pasword_hase])
+        redirect("/")
     end
 
     get '/spel/:id' do | id |
@@ -58,9 +71,7 @@ class App < Sinatra::Base
         redirect "/spel"
     end
 
-    get '/spel/loggin' do
-        erb(:"spel/loggin")
-    end
+
 
 
 end
