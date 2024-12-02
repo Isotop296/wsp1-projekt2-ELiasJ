@@ -1,7 +1,16 @@
-<div class="loggin">
-<form action="/loggin/new" method="post">
-<label>Ur username <input type="text" name="username"></label>
-<label>Ur password <input type="text" name="password"></label>
-<input type="submit" value="Spara">
-</form>
+<div>
+<%=@error_message%>
 </div>
+<div class="loggin">
+    <form action="/loggin/new" method="post">
+        <label for="username">Your Username</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Your Password</label>
+        <input type="password" id="password" name="password" required>
+        
+        <input type="submit" value="Save">
+    </form>
+</div>
+
+

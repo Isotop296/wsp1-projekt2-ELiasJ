@@ -22,17 +22,30 @@ class App < Sinatra::Base
     end
 
     get '/loggin' do
-        p "hej"
         erb(:"spel/loggin")
     end
 
     post "/loggin/new" do
         username = params[:username]
         password = params[:password]
-        pasword_hase = BCrypt::Password.create(password)
-        db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, pasword_hase])
-        redirect("/")
+    
+        user_exists = db.execute('SELECT * FROM users WHERE username = ?', [username]).first
+    
+        if user_exists
+            @error_message = "username already in use or inapropriet, choose another one"
+            return erb(:"spel/loggin")
+        else
+            password_hash = BCrypt::Password.create(password)
+            db.execute('INSERT INTO users (username, password, admin) VALUES (?, ?, ?)', [username, password_hash, admin])
+            redirect("/")
+        end
     end
+    
+    get "/loggin/error" do 
+
+    end
+
+
 
     get '/spel/:id' do | id |
         result = db.execute('SELECT beskrivning FROM spel WHERE id = ?', [id]).first
