@@ -1,4 +1,6 @@
 class App < Sinatra::Base
+    @user = nil
+
     def db
         return @db if @db
 
@@ -50,8 +52,9 @@ class App < Sinatra::Base
         namn = params[:spel_namn]
         pris = params[:spel_pris]
         beskrivning = params[:spel_beskrivning]
-        spel_kategori = params[:spel_kategori]
-        db.execute('UPDATE spel SET namn = ?, pris = ?, beskrivning = ?, kategori = ? WHERE id = ?', [namn, pris, beskrivning, spel_kategori, id])
+        kreator = params[:spel_kreator]
+        spel_kategori = @user
+        db.execute('UPDATE spel SET namn = ?, pris = ?, beskrivning = ?, kategori = ?, kreator = ? WHERE id = ?', [namn, pris, beskrivning, spel_kategori, spel_kreator, id])
         redirect "/spel"
     end
 
