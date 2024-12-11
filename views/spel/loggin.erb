@@ -1,8 +1,7 @@
-<div>
 <%=@error_message%>
-</div>
 <div class="loggin">
-    <form action="/loggin/new" method="post">
+    <p>Inlogning<p>
+    <form action="/loggin/check" method="post">
         <label for="username">Your Username</label>
         <input type="text" id="username" name="username" required>
         
@@ -14,3 +13,17 @@
 </div>
 
 
+
+<%=@error_message_creat%>
+<div class="creat">
+    <p>skapa en profil<p>
+    <form action="/loggin/new" method="post">
+        <label for="username">Your Username</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Your Password</label>
+        <input type="password" id="password" name="password" required>
+        
+        <input type="submit" value="Save">
+    </form>
+</div>

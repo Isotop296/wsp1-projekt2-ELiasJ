@@ -39,13 +39,17 @@ body {
   font-size: 18px;
 
 }
+.skapare_div{
+  padding-left: 20px;
+  padding-top: 30px;
+  font-size: 10px;
+}
 
 .knappar_div{
   display: flex;
   justify-content: bottom;
-padding-top: 67px;
+padding-top: 20px;
 padding-left: 90px;
-
 }
 
 
@@ -61,3 +65,16 @@ padding-left: 90px;
   box-shadow:  rgb(18, 24, 27) 0px 25px 50px -12px;
 }
 
+.loggin{
+  display: flex;
+  flex-direction: column;
+position: absolute;
+top: 300px;
+}
+
+.creat{
+  display: flex;
+  flex-direction: column;
+ 
+
+}

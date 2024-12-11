@@ -7,7 +7,7 @@
 <h2>Spelen du vill spela</h2>
 <div class="flex">
 <% @spel_oklara.each do |spel| %>
-  <div class="backferg"><div class="namn_div"><%= spel['namn'] %></div> <div class="beskrivning_div"><%= spel['beskrivning'] %></div>
+  <div class="backferg"><div class="namn_div"><%= spel['namn'] %></div> <div class="beskrivning_div"><%= spel['beskrivning'] %></div><div class="skapare_div"><%= spel['kreator'] %></div>
     <div class="knappar_div"><form action="/spel/<%=spel["id"]%>/delete" method="post">
       <input type="submit" value="ta bort"> 
     </form>
@@ -23,7 +23,7 @@
 <h2>Spelen du har spelat</h2>
 <div class="flex">
 <% @spel_klara.each do |spel| %>
-  <div class="backferg"><div class="namn_div"><%= spel['namn'] %></div> <div class="beskrivning_div"><%= spel['beskrivning'] %></div>
+  <div class="backferg"><div class="namn_div"><%= spel['namn'] %></div> <div class="beskrivning_div"><%= spel['beskrivning'] %></div><div class="skapare_div"><%= spel['kreator'] %></div>
     <div class="knappar_div"><form action="/spel/<%=spel["id"]%>/delete" method="post">
       <input type="submit" value="ta bort"> 
     </form>
